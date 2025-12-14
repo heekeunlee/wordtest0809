@@ -1,0 +1,263 @@
+@import url('https://fonts.googleapis.com/css2?family=Jua&family=Nunito:wght@400;700;900&display=swap');
+
+:root {
+  --primary-color: #FF9F1C; /* Orange Peel */
+  --secondary-color: #2EC4B6; /* Tiffany Blue */
+  --accent-color: #E71D36; /* Rose Madder */
+  --background-color: #CBF3F0; /* Light Cyan */
+  --card-bg: #FFFFFF;
+  --text-color: #011627;
+  --success-color: #4CAF50;
+  --error-color: #F44336;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: 'Nunito', 'Jua', sans-serif; /* 'Jua' is a friendly Korean font */
+  background-color: var(--background-color);
+  background-image: radial-gradient(#FFBF69 20%, transparent 20%),
+                    radial-gradient(#CBF3F0 20%, transparent 20%);
+  background-position: 0 0, 50px 50px;
+  background-size: 100px 100px;
+  color: var(--text-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.app-container {
+  width: 100%;
+  max-width: 600px;
+  padding: 20px;
+}
+
+/* Animations */
+@keyframes bounceIn {
+  0% { transform: scale(0.3); opacity: 0; }
+  50% { transform: scale(1.05); opacity: 1; }
+  70% { transform: scale(0.9); }
+  100% { transform: scale(1); }
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes shake {
+  10%, 90% { transform: translate3d(-1px, 0, 0); }
+  20%, 80% { transform: translate3d(2px, 0, 0); }
+  30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
+  40%, 60% { transform: translate3d(4px, 0, 0); }
+}
+
+/* Screens */
+.screen {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  animation: bounceIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.screen.active {
+  display: flex;
+}
+
+/* Home Screen */
+h1 {
+  font-family: 'Jua', sans-serif;
+  font-size: 3rem;
+  color: var(--accent-color);
+  text-shadow: 3px 3px 0px #FF9F1C;
+  margin-bottom: 30px;
+  text-align: center;
+  animation: float 3s ease-in-out infinite;
+}
+
+.day-selector {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+}
+
+.btn {
+  background: white;
+  border: none;
+  padding: 20px;
+  font-family: 'Jua', sans-serif;
+  font-size: 1.5rem;
+  border-radius: 20px;
+  box-shadow: 0 8px 0 var(--secondary-color);
+  cursor: pointer;
+  transition: all 0.1s;
+  color: var(--text-color);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn:active {
+  box-shadow: 0 2px 0 var(--secondary-color);
+  transform: translateY(6px);
+}
+
+.btn-primary {
+  background: var(--primary-color);
+  color: white;
+  box-shadow: 0 8px 0 #E0890B;
+}
+
+.btn-primary:active {
+  box-shadow: 0 2px 0 #E0890B;
+}
+
+/* Quiz Screen */
+.progress-bar-container {
+  width: 100%;
+  height: 20px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.progress-bar {
+  height: 100%;
+  background-color: var(--secondary-color);
+  width: 0%;
+  transition: width 0.3s ease;
+}
+
+.card {
+  background: var(--card-bg);
+  width: 100%;
+  padding: 30px;
+  border-radius: 30px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  text-align: center;
+  position: relative;
+}
+
+.question-word {
+  font-size: 3rem;
+  font-weight: 900;
+  color: var(--primary-color);
+  margin-bottom: 30px;
+}
+
+.options-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+.option-btn {
+  background: #f0f0f0;
+  border: 2px solid transparent;
+  padding: 20px 10px;
+  border-radius: 15px;
+  font-family: 'Jua', sans-serif;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: transform 0.2s, background-color 0.2s;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  word-break: keep-all;
+}
+
+.option-btn:hover {
+  background: #e0e0e0;
+  transform: translateY(-2px);
+}
+
+.option-btn.correct {
+  background-color: var(--success-color);
+  color: white;
+  border-color: #388E3C;
+  animation: bounceIn 0.5s;
+}
+
+.option-btn.wrong {
+  background-color: var(--error-color);
+  color: white;
+  border-color: #D32F2F;
+  animation: shake 0.5s;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  opacity: 0.7;
+}
+
+/* Result Screen */
+.score-display {
+  background: white;
+  padding: 40px;
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  margin-bottom: 30px;
+  animation: float 4s ease-in-out infinite;
+}
+
+.score-number {
+  font-size: 4rem;
+  font-weight: 900;
+  color: var(--secondary-color);
+}
+
+.score-text {
+  font-size: 1.2rem;
+  color: #666;
+}
+
+.message {
+  font-size: 1.5rem;
+  font-family: 'Jua', sans-serif;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.confetti {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: #f00;
+  animation: confetti-fall 3s linear infinite;
+}
+
+@keyframes confetti-fall {
+  0% { transform: translateY(-100vh) rotate(0deg); }
+  100% { transform: translateY(100vh) rotate(720deg); }
+}
+
+@media (max-width: 400px) {
+  .options-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .question-word {
+    font-size: 2.2rem;
+  }
+}

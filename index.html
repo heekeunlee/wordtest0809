@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English Vocabulary Quiz</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎓</text></svg>">
+</head>
+
+<body>
+
+    <div class="app-container">
+
+        <!-- START SCREEN -->
+        <div id="start-screen" class="screen active">
+            <h1>Word Quiz!</h1>
+            <div class="day-selector">
+                <button class="btn btn-primary" onclick="app.startQuiz('Day 08')">Day 08 Start!</button>
+                <button class="btn btn-primary" onclick="app.startQuiz('Day 09')">Day 09 Start!</button>
+            </div>
+        </div>
+
+        <!-- QUIZ SCREEN -->
+        <div id="quiz-screen" class="screen">
+            <div class="progress-bar-container">
+                <div id="progress-bar" class="progress-bar"></div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <span id="day-label">Day 08</span>
+                    <span id="question-counter">1 / 20</span>
+                </div>
+                <div id="question-word" class="question-word">planet</div>
+
+                <div id="options-grid" class="options-grid">
+                    <!-- Options will be injected here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- RESULT SCREEN -->
+        <div id="result-screen" class="screen">
+            <h1>Quiz Finished!</h1>
+
+            <div class="score-display">
+                <span id="final-score" class="score-number">100</span>
+                <span class="score-text">Points</span>
+            </div>
+
+            <p id="result-message" class="message">Amazing Job!</p>
+
+            <button class="btn" onclick="app.restart()">Play Again</button>
+        </div>
+
+    </div>
+
+    <div id="confetti-container"></div>
+
+    <script src="vocab.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
