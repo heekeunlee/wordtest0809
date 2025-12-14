@@ -8,7 +8,7 @@ class QuizApp {
         this.currentQuestionIndex = 0;
         this.score = 0;
         this.totalQuestions = 0;
-        this.audioContext = null;
+        this.synth = window.speechSynthesis;
     }
 
     init() {
@@ -72,6 +72,9 @@ class QuizApp {
         document.getElementById('question-counter').innerText = `${this.currentQuestionIndex + 1} / ${this.totalQuestions}`;
         document.getElementById('question-word').innerText = question.word;
 
+        // Auto-play English word
+        this.speakCurrentWord();
+
         // Update Progress Bar
         const progress = ((this.currentQuestionIndex) / this.totalQuestions) * 100;
         document.getElementById('progress-bar').style.width = `${progress}%`;
@@ -96,6 +99,8 @@ class QuizApp {
         if (selected === correct) {
             btn.classList.add('correct');
             this.score++;
+            // Speak Korean meaning
+            this.speak(correct, 'ko-KR');
         } else {
             btn.classList.add('wrong');
             // Highlight the correct one
@@ -163,6 +168,23 @@ class QuizApp {
         setTimeout(() => {
             container.innerHTML = '';
         }, 5000);
+    }
+
+    speak(text, lang) {
+        if (this.synth.speaking) {
+            this.synth.cancel();
+        }
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = lang;
+        utterance.rate = 0.8; // Slightly slower for kids
+        this.synth.speak(utterance);
+    }
+
+    speakCurrentWord() {
+        const question = this.questions[this.currentQuestionIndex];
+        if (question) {
+            this.speak(question.word, 'en-US');
+        }
     }
 }
 

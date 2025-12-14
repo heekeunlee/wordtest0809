@@ -261,3 +261,35 @@ h1 {
     font-size: 2.2rem;
   }
 }
+
+.question-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.question-word {
+  margin-bottom: 0 !important; /* Override previous margin */
+}
+
+.speaker-btn {
+  background: #FFF3E0;
+  border: 2px solid var(--primary-color);
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.1s;
+  box-shadow: 0 4px 0 #FFCC80;
+}
+
+.speaker-btn:active {
+  transform: scale(0.95);
+  box-shadow: 0 2px 0 #FFCC80;
+}
