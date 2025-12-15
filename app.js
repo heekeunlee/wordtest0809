@@ -50,25 +50,36 @@ class QuizApp {
         btn.innerText = "🔊 Testing System...";
         btn.disabled = true;
 
-        // 1. Try Web Audio API (Beep) - Cuts through some mute settings, tests system volume
+        // 1. Try Web Audio API (Beep) with active resume
         try {
             const AudioContext = window.AudioContext || window.webkitAudioContext;
             if (AudioContext) {
                 const ctx = new AudioContext();
+
+                // CRITICAL: Mobile browsers require explicit resume on user gesture
+                if (ctx.state === 'suspended') {
+                    ctx.resume().then(() => {
+                        console.log("AudioContext resumed!");
+                    });
+                }
+
                 const osc = ctx.createOscillator();
                 const gain = ctx.createGain();
 
-                osc.type = 'sine';
-                osc.frequency.setValueAtTime(440, ctx.currentTime); // A4 note
+                osc.type = 'triangle'; // Louder/sharper than sine
+                osc.frequency.setValueAtTime(600, ctx.currentTime);
                 osc.connect(gain);
                 gain.connect(ctx.destination);
 
                 osc.start();
-                gain.gain.exponentialRampToValueAtTime(0.00001, ctx.currentTime + 0.5);
-                osc.stop(ctx.currentTime + 0.5);
+                // Play for longer (0.5s -> 1.0s) and louder
+                gain.gain.setValueAtTime(1, ctx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 1.0);
+                osc.stop(ctx.currentTime + 1.0);
             }
         } catch (e) {
             console.error("Web Audio API failed", e);
+            alert("Web Audio Error: " + e.message);
         }
 
         // 2. Try TTS (Voice)
