@@ -47,45 +47,63 @@ class QuizApp {
     testAudio() {
         const btn = document.querySelector('.btn-secondary');
         const originalText = btn.innerText;
-        btn.innerText = "🔊 Playing...";
+        btn.innerText = "🔊 Testing System...";
         btn.disabled = true;
 
-        // Force voice load if empty
-        if (this.voices.length === 0) {
-            this.loadVoices();
+        // 1. Try Web Audio API (Beep) - Cuts through some mute settings, tests system volume
+        try {
+            const AudioContext = window.AudioContext || window.webkitAudioContext;
+            if (AudioContext) {
+                const ctx = new AudioContext();
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(440, ctx.currentTime); // A4 note
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+
+                osc.start();
+                gain.gain.exponentialRampToValueAtTime(0.00001, ctx.currentTime + 0.5);
+                osc.stop(ctx.currentTime + 0.5);
+            }
+        } catch (e) {
+            console.error("Web Audio API failed", e);
         }
 
-        const u = new SpeechSynthesisUtterance("Check one, two. Sound system is working!");
-        u.lang = 'en-US';
-        u.rate = 1.0;
-        u.volume = 1.0; // Explicitly set max volume
-
-        // Try to pick a voice, but fallback gracefully
-        const preferredVoice = this.voices.find(v => v.name.includes("Google US English")) ||
-            this.voices.find(v => v.lang === 'en-US');
-        if (preferredVoice) u.voice = preferredVoice;
-
-        u.onend = () => {
-            btn.innerText = originalText;
-            btn.disabled = false;
-        };
-
-        u.onerror = (e) => {
-            alert("Audio Error: " + e.error);
-            btn.innerText = originalText;
-            btn.disabled = false;
-        };
-
-        // If it takes too long (e.g. silent fail), reset button
+        // 2. Try TTS (Voice)
         setTimeout(() => {
-            if (btn.disabled) {
+            btn.innerText = "🔊 Speaking...";
+
+            const u = new SpeechSynthesisUtterance("Sound check complete.");
+            u.lang = 'en-US';
+            // Do NOT force a custom voice here to rule out voice corruption
+            // u.voice = ... (removed for test)
+            u.volume = 1.0;
+            u.rate = 1.0;
+
+            u.onend = () => {
                 btn.innerText = originalText;
                 btn.disabled = false;
-            }
-        }, 5000);
+            };
 
-        this.synth.cancel();
-        this.synth.speak(u);
+            u.onerror = (e) => {
+                alert("TTS Error: " + e.error);
+                btn.innerText = originalText;
+                btn.disabled = false;
+            };
+
+            this.synth.cancel();
+            this.synth.speak(u);
+
+            // Safety reset
+            setTimeout(() => {
+                if (btn.disabled) {
+                    btn.innerText = originalText;
+                    btn.disabled = false;
+                }
+            }, 4000);
+        }, 600);
     }
 
     startQuiz(day) {
