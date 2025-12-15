@@ -160,10 +160,16 @@ h1 {
 }
 
 .day-selector {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   gap: 15px;
   width: 100%;
+}
+
+.sound-check-area {
+  grid-column: 1 / -1;
+  /* Span full width */
+  margin-bottom: 20px;
 }
 
 .btn {
@@ -192,9 +198,7 @@ h1 {
   word-break: keep-all;
 }
 
-.sound-check-area {
-  margin-bottom: 20px;
-}
+
 
 .btn:active {
   box-shadow: 0 2px 0 var(--secondary-color);

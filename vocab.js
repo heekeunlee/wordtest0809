@@ -46,7 +46,8 @@ window.vocabulary = {
 };
 
 /* Day 10-14 Update */
-vocabulary["Day 10"] = [
+/* Day 10-14 Update */
+window.vocabulary["Day 10"] = [
     { word: "thankful", meaning: "감사하는" },
     { word: "benefit", meaning: "혜택, 이익" },
     { word: "communicate", meaning: "의사소통하다" },
@@ -69,7 +70,7 @@ vocabulary["Day 10"] = [
     { word: "be based on", meaning: "~에 근거하다" }
 ];
 
-vocabulary["Day 11"] = [
+window.vocabulary["Day 11"] = [
     { word: "available", meaning: "이용 가능한" },
     { word: "treat", meaning: "다루다, 대접하다" },
     { word: "education", meaning: "교육" },
@@ -92,7 +93,7 @@ vocabulary["Day 11"] = [
     { word: "move on", meaning: "넘어가다, 이동하다" }
 ];
 
-vocabulary["Day 12"] = [
+window.vocabulary["Day 12"] = [
     { word: "belief", meaning: "믿음" },
     { word: "abroad", meaning: "해외로" },
     { word: "kindness", meaning: "친절" },
@@ -115,7 +116,7 @@ vocabulary["Day 12"] = [
     { word: "look up", meaning: "찾아보다, 올려다보다" }
 ];
 
-vocabulary["Day 13"] = [
+window.vocabulary["Day 13"] = [
     { word: "context", meaning: "문맥, 상황" },
     { word: "beginning", meaning: "시작" },
     { word: "growth", meaning: "성장" },
@@ -138,7 +139,7 @@ vocabulary["Day 13"] = [
     { word: "along with", meaning: "~와 함께" }
 ];
 
-vocabulary["Day 14"] = [
+window.vocabulary["Day 14"] = [
     { word: "positive", meaning: "긍정적인" },
     { word: "neighborhood", meaning: "이웃, 동네" },
     { word: "express", meaning: "표현하다" },
@@ -161,7 +162,7 @@ vocabulary["Day 14"] = [
     { word: "check out", meaning: "확인하다, 대출하다" }
 ];
 
-vocabulary["Day 15"] = [
+window.vocabulary["Day 15"] = [
     { word: 'shoot', meaning: '쏘다/촬영하다' },
     { word: 'organization', meaning: '조직/단체' },
     { word: 'rush', meaning: '서두르다/돌진' },
@@ -184,7 +185,7 @@ vocabulary["Day 15"] = [
     { word: 'look forward to', meaning: '~을 고대하다(기대하다)' }
 ];
 
-vocabulary["Day 16"] = [
+window.vocabulary["Day 16"] = [
     { word: 'announce', meaning: '발표하다/알리다' },
     { word: 'saying', meaning: '속담/격언' },
     { word: 'silence', meaning: '침묵/고요' },
@@ -207,7 +208,7 @@ vocabulary["Day 16"] = [
     { word: 'little by little', meaning: '조금씩/점차' }
 ];
 
-vocabulary["Day 17"] = [
+window.vocabulary["Day 17"] = [
     { word: 'educate', meaning: '교육하다' },
     { word: 'attractive', meaning: '매력적인' },
     { word: 'sparkle', meaning: '반짝이다' },
@@ -230,7 +231,7 @@ vocabulary["Day 17"] = [
     { word: 'break out', meaning: '발생하다/일어나다' }
 ];
 
-vocabulary["Day 18"] = [
+window.vocabulary["Day 18"] = [
     { word: 'attract', meaning: '마음을 끌다/유인하다' },
     { word: 'disappointed', meaning: '실망한' },
     { word: 'mess', meaning: '엉망진창/혼란' },
@@ -251,4 +252,73 @@ vocabulary["Day 18"] = [
     { word: 'disappear', meaning: '사라지다' },
     { word: 'from time to time', meaning: '가끔/때때로' },
     { word: 'keep in mind', meaning: '명심하다' }
+];
+
+window.vocabulary["Day 19"] = [
+    { word: 'policy', meaning: '정책/방침' },
+    { word: 'solution', meaning: '해결책' },
+    { word: 'request', meaning: '요청하다' },
+    { word: 'import', meaning: '수입하다' },
+    { word: 'modern', meaning: '현대의' },
+    { word: 'flavor', meaning: '맛/풍미' },
+    { word: 'saving', meaning: '절약/저축' },
+    { word: 'origin', meaning: '기원/유래' },
+    { word: 'version', meaning: '버전/형태' },
+    { word: 'technology', meaning: '기술' },
+    { word: 'confident', meaning: '자신감 있는' },
+    { word: 'income', meaning: '수입/소득' },
+    { word: 'distant', meaning: '먼/떨어진' },
+    { word: 'suggestion', meaning: '제안' },
+    { word: 'relieve', meaning: '안도시키다/완화하다' },
+    { word: 'mental', meaning: '정신의/마음의' },
+    { word: 'stain', meaning: '얼룩' },
+    { word: 'compare', meaning: '비교하다' },
+    { word: 'now that', meaning: '~이니까/~하기 때문에' },
+    { word: 'pay off', meaning: '성과를 거두다/빚을 갚다' }
+];
+
+window.vocabulary["Day 20"] = [
+    { word: 'personal', meaning: '개인의' },
+    { word: 'vivid', meaning: '생생한/선명한' },
+    { word: 'profit', meaning: '이익/수익' },
+    { word: 'imaginative', meaning: '상상력이 풍부한' },
+    { word: 'impress', meaning: '깊은 인상을 주다' },
+    { word: 'motivate', meaning: '동기를 부여하다' },
+    { word: 'highly', meaning: '매우/높이' },
+    { word: 'consume', meaning: '소비하다' },
+    { word: 'cruel', meaning: '잔인한' },
+    { word: 'operate', meaning: '작동하다/운영하다' },
+    { word: 'essential', meaning: '필수적인' },
+    { word: 'rid', meaning: '제거하다 (get rid of)' },
+    { word: 'prove', meaning: '증명하다' },
+    { word: 'damage', meaning: '손해/피해를 입히다' },
+    { word: 'argue', meaning: '논쟁하다/주장하다' },
+    { word: 'compete', meaning: '경쟁하다' },
+    { word: 'immediately', meaning: '즉시' },
+    { word: 'ignore', meaning: '무시하다' },
+    { word: 'not only A but also B', meaning: 'A뿐만 아니라 B도' },
+    { word: 'keep in touch', meaning: '연락하고 지내다' }
+];
+
+window.vocabulary["Day 21"] = [
+    { word: 'container', meaning: '용기/그릇' },
+    { word: 'paragraph', meaning: '단락' },
+    { word: 'term', meaning: '기간/용어' },
+    { word: 'publish', meaning: '출판하다' },
+    { word: 'custom', meaning: '관습/세관' },
+    { word: 'correctly', meaning: '정확하게' },
+    { word: 'attend', meaning: '참석하다' },
+    { word: 'variety', meaning: '다양성/종류' },
+    { word: 'knowledge', meaning: '지식' },
+    { word: 'shift', meaning: '이동하다/바꾸다' },
+    { word: 'minor', meaning: '사소한/미성년자' },
+    { word: 'messy', meaning: '지저분한' },
+    { word: 'degree', meaning: '학위/도(온도)' },
+    { word: 'religious', meaning: '종교적인' },
+    { word: 'decision', meaning: '결정' },
+    { word: 'settle', meaning: '정착하다/해결하다' },
+    { word: 'manual', meaning: '설명서/수동의' },
+    { word: 'phrase', meaning: '구/문구' },
+    { word: 'according to', meaning: '~에 따르면' },
+    { word: 'be used to', meaning: '~에 익숙하다' }
 ];
