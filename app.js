@@ -44,9 +44,14 @@ class QuizApp {
         // A more robust solution might store all and select dynamically in speak().
     }
 
+    testAudio() {
+        this.speak("Check one, two. Sound system is working!", "en-US");
+    }
+
     startQuiz(day) {
-        // Mobile Audio Unlock: Play a silent utterance immediately on user gesture
-        this.speak('', 'en-US');
+        // Mobile Audio Unlock: Play a short audible word immediately on user gesture
+        // Empty string might be ignored by some browsers optimization
+        this.speak('Start', 'en-US');
 
         this.currentDay = day;
         const words = vocabulary[day];
@@ -207,7 +212,6 @@ class QuizApp {
 
     speak(text, lang) {
         if (!this.synth) return; // Safety check
-        if (!text) return; // Ignore empty text (used for unlocking)
 
         try {
             this.synth.cancel(); // Always cancel previous

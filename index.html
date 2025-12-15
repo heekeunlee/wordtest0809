@@ -18,6 +18,10 @@
         <div id="start-screen" class="screen active">
             <h1>Word Quiz!</h1>
             <div class="day-selector">
+                <div class="sound-check-area">
+                    <p class="hint-text">📢 소리가 안 들리면 <strong>벨소리/진동 모드</strong>를 확인하고 해제해주세요!</p>
+                    <button class="btn btn-secondary" onclick="app.testAudio()">🔊 Sound Check</button>
+                </div>
                 <button class="btn btn-primary" onclick="app.startQuiz('Day 08')">Day 08 Start!</button>
                 <button class="btn btn-primary" onclick="app.startQuiz('Day 09')">Day 09 Start!</button>
                 <button class="btn btn-primary" onclick="app.startQuiz('Day 10')">Day 10 Start!</button>
