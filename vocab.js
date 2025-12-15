@@ -44,3 +44,119 @@ window.vocabulary = {
         { word: "make it", meaning: "해내다, 성공하다" }
     ]
 };
+
+/* Day 10-14 Update */
+vocabulary["Day 10"] = [
+    { word: "thankful", meaning: "감사하는" },
+    { word: "benefit", meaning: "혜택, 이익" },
+    { word: "communicate", meaning: "의사소통하다" },
+    { word: "impossible", meaning: "불가능한" },
+    { word: "effect", meaning: "효과, 영향" },
+    { word: "edit", meaning: "편집하다" },
+    { word: "foreign", meaning: "외국의" },
+    { word: "totally", meaning: "완전히" },
+    { word: "parade", meaning: "행진, 퍼레이드" },
+    { word: "increase", meaning: "증가하다" },
+    { word: "pleasure", meaning: "기쁨" },
+    { word: "notice", meaning: "알아차리다, 공지" },
+    { word: "annoy", meaning: "짜증나게 하다" },
+    { word: "colleague", meaning: "동료" },
+    { word: "option", meaning: "선택" },
+    { word: "complain", meaning: "불평하다" },
+    { word: "garage", meaning: "차고" },
+    { word: "lay", meaning: "놓다, 눕히다" },
+    { word: "carry out", meaning: "수행하다" },
+    { word: "be based on", meaning: "~에 근거하다" }
+];
+
+vocabulary["Day 11"] = [
+    { word: "available", meaning: "이용 가능한" },
+    { word: "treat", meaning: "다루다, 대접하다" },
+    { word: "education", meaning: "교육" },
+    { word: "community", meaning: "지역사회, 공동체" },
+    { word: "sweat", meaning: "땀, 땀을 흘리다" },
+    { word: "perform", meaning: "공연하다, 수행하다" },
+    { word: "anxious", meaning: "불안해하는" },
+    { word: "select", meaning: "선택하다" },
+    { word: "successful", meaning: "성공적인" },
+    { word: "military", meaning: "군대의" },
+    { word: "opportunity", meaning: "기회" },
+    { word: "staff", meaning: "직원" },
+    { word: "prefer", meaning: "선호하다" },
+    { word: "index", meaning: "색인, 지수" },
+    { word: "appearance", meaning: "외모, 출현" },
+    { word: "swear", meaning: "맹세하다, 욕하다" },
+    { word: "deny", meaning: "부인하다" },
+    { word: "confirm", meaning: "확인하다" },
+    { word: "from now on", meaning: "지금부터" },
+    { word: "move on", meaning: "넘어가다, 이동하다" }
+];
+
+vocabulary["Day 12"] = [
+    { word: "belief", meaning: "믿음" },
+    { word: "abroad", meaning: "해외로" },
+    { word: "kindness", meaning: "친절" },
+    { word: "talented", meaning: "재능 있는" },
+    { word: "offer", meaning: "주다, 제안하다" },
+    { word: "forgive", meaning: "용서하다" },
+    { word: "manner", meaning: "태도, 예의" },
+    { word: "crowd", meaning: "군중" },
+    { word: "companion", meaning: "동료, 친구" },
+    { word: "reduce", meaning: "줄이다" },
+    { word: "normally", meaning: "보통, 대개" },
+    { word: "acquire", meaning: "얻다, 습득하다" },
+    { word: "addition", meaning: "추가, 덧셈" },
+    { word: "excitement", meaning: "흥분" },
+    { word: "neither", meaning: "어느 쪽도 ~아닌" },
+    { word: "fortune", meaning: "운, 재산" },
+    { word: "swallow", meaning: "삼키다, 제비" },
+    { word: "nowadays", meaning: "요즘" },
+    { word: "far from", meaning: "~와 거리가 먼" },
+    { word: "look up", meaning: "찾아보다, 올려다보다" }
+];
+
+vocabulary["Day 13"] = [
+    { word: "context", meaning: "문맥, 상황" },
+    { word: "beginning", meaning: "시작" },
+    { word: "growth", meaning: "성장" },
+    { word: "per", meaning: "~당, ~마다" },
+    { word: "recover", meaning: "회복하다" },
+    { word: "economic", meaning: "경제의" },
+    { word: "overcome", meaning: "극복하다" },
+    { word: "manage", meaning: "관리하다, 해내다" },
+    { word: "graduate", meaning: "졸업하다" },
+    { word: "charm", meaning: "매력" },
+    { word: "truly", meaning: "진심으로, 정말로" },
+    { word: "avoid", meaning: "피하다" },
+    { word: "admit", meaning: "인정하다" },
+    { word: "smooth", meaning: "부드러운" },
+    { word: "surface", meaning: "표면" },
+    { word: "negative", meaning: "부정적인" },
+    { word: "status", meaning: "지위, 상태" },
+    { word: "system", meaning: "시스템, 체계" },
+    { word: "sign up for", meaning: "~에 등록하다" },
+    { word: "along with", meaning: "~와 함께" }
+];
+
+vocabulary["Day 14"] = [
+    { word: "positive", meaning: "긍정적인" },
+    { word: "neighborhood", meaning: "이웃, 동네" },
+    { word: "express", meaning: "표현하다" },
+    { word: "achieve", meaning: "성취하다" },
+    { word: "instrument", meaning: "도구, 악기" },
+    { word: "ensure", meaning: "보장하다" },
+    { word: "competition", meaning: "경쟁" },
+    { word: "repair", meaning: "수리하다" },
+    { word: "enjoyable", meaning: "즐거운" },
+    { word: "crush", meaning: "으스러뜨리다" },
+    { word: "ability", meaning: "능력" },
+    { word: "imagine", meaning: "상상하다" },
+    { word: "performance", meaning: "공연, 실적" },
+    { word: "aid", meaning: "도움, 원조" },
+    { word: "facility", meaning: "시설" },
+    { word: "access", meaning: "접근" },
+    { word: "conversation", meaning: "대화" },
+    { word: "invent", meaning: "발명하다" },
+    { word: "a number of", meaning: "많은" },
+    { word: "check out", meaning: "확인하다, 대출하다" }
+];
