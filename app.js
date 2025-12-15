@@ -45,7 +45,47 @@ class QuizApp {
     }
 
     testAudio() {
-        this.speak("Check one, two. Sound system is working!", "en-US");
+        const btn = document.querySelector('.btn-secondary');
+        const originalText = btn.innerText;
+        btn.innerText = "🔊 Playing...";
+        btn.disabled = true;
+
+        // Force voice load if empty
+        if (this.voices.length === 0) {
+            this.loadVoices();
+        }
+
+        const u = new SpeechSynthesisUtterance("Check one, two. Sound system is working!");
+        u.lang = 'en-US';
+        u.rate = 1.0;
+        u.volume = 1.0; // Explicitly set max volume
+
+        // Try to pick a voice, but fallback gracefully
+        const preferredVoice = this.voices.find(v => v.name.includes("Google US English")) ||
+            this.voices.find(v => v.lang === 'en-US');
+        if (preferredVoice) u.voice = preferredVoice;
+
+        u.onend = () => {
+            btn.innerText = originalText;
+            btn.disabled = false;
+        };
+
+        u.onerror = (e) => {
+            alert("Audio Error: " + e.error);
+            btn.innerText = originalText;
+            btn.disabled = false;
+        };
+
+        // If it takes too long (e.g. silent fail), reset button
+        setTimeout(() => {
+            if (btn.disabled) {
+                btn.innerText = originalText;
+                btn.disabled = false;
+            }
+        }, 5000);
+
+        this.synth.cancel();
+        this.synth.speak(u);
     }
 
     startQuiz(day) {
