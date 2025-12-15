@@ -9,14 +9,45 @@ class QuizApp {
         this.score = 0;
         this.totalQuestions = 0;
         this.synth = window.speechSynthesis;
+        this.voices = [];
     }
 
     init() {
         // Expose app to global scope for HTML onclick handlers
         window.app = this;
+        this.loadVoices();
+        if (window.speechSynthesis.onvoiceschanged !== undefined) {
+            window.speechSynthesis.onvoiceschanged = () => this.loadVoices();
+        }
+    }
+
+    loadVoices() {
+        const allVoices = this.synth.getVoices();
+        const enUSVoices = allVoices.filter(v => v.lang === 'en-US');
+        const koKRVoices = allVoices.filter(v => v.lang === 'ko-KR');
+
+        // Prioritize English voices
+        let preferredEnVoice = enUSVoices.find(v => v.name.includes("Google US English")) ||
+            enUSVoices.find(v => v.name.includes("Samantha")) ||
+            enUSVoices.find(v => v.name.includes("Microsoft")) ||
+            enUSVoices[0]; // Fallback to first available en-US voice
+
+        // Prioritize Korean voices
+        let preferredKoVoice = koKRVoices.find(v => v.name.includes("Google 한국의")) ||
+            koKRVoices[0]; // Fallback to first available ko-KR voice
+
+        this.voices = [];
+        if (preferredEnVoice) this.voices.push(preferredEnVoice);
+        if (preferredKoVoice) this.voices.push(preferredKoVoice);
+        // Add any other voices if needed, or just keep the preferred ones
+        // For simplicity, we'll just store the preferred ones for now.
+        // A more robust solution might store all and select dynamically in speak().
     }
 
     startQuiz(day) {
+        // Mobile Audio Unlock: Play a silent utterance immediately on user gesture
+        this.speak('', 'en-US');
+
         this.currentDay = day;
         const words = vocabulary[day];
         if (!words) {
@@ -88,9 +119,11 @@ class QuizApp {
         });
 
         // Auto-play English word (Safely moved to end)
+        // Mobile browsers might block this if not directly user-triggered,
+        // but 'startQuiz' unlock hack helps.
         setTimeout(() => {
             this.speakCurrentWord();
-        }, 300); // Small delay to ensure UI is ready and feels natural
+        }, 500);
     }
 
     handleAnswer(btn, selected, correct) {
@@ -174,14 +207,32 @@ class QuizApp {
 
     speak(text, lang) {
         if (!this.synth) return; // Safety check
+        if (!text) return; // Ignore empty text (used for unlocking)
 
         try {
-            if (this.synth.speaking) {
-                this.synth.cancel();
-            }
+            this.synth.cancel(); // Always cancel previous
+
             const utterance = new SpeechSynthesisUtterance(text);
             utterance.lang = lang;
-            utterance.rate = 0.8; // Slightly slower for kids
+            utterance.rate = 0.8;
+
+            // Voice Selection Logic
+            if (this.voices.length > 0) {
+                let preferredVoice = null;
+                if (lang === 'en-US') {
+                    // Start looking for high quality voices
+                    preferredVoice = this.voices.find(v => v.name.includes("Google US English")) ||
+                        this.voices.find(v => v.name.includes("Samantha")) ||
+                        this.voices.find(v => v.lang === 'en-US');
+                } else if (lang === 'ko-KR') {
+                    preferredVoice = this.voices.find(v => v.lang === 'ko-KR');
+                }
+
+                if (preferredVoice) {
+                    utterance.voice = preferredVoice;
+                }
+            }
+
             this.synth.speak(utterance);
         } catch (e) {
             console.error("Speech synthesis failed:", e);
