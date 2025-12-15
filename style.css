@@ -1,10 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Jua&family=Nunito:wght@400;700;900&display=swap');
 
 :root {
-  --primary-color: #FF9F1C; /* Orange Peel */
-  --secondary-color: #2EC4B6; /* Tiffany Blue */
-  --accent-color: #E71D36; /* Rose Madder */
-  --background-color: #CBF3F0; /* Light Cyan */
+  --primary-color: #FF9F1C;
+  /* Orange Peel */
+  --secondary-color: #2EC4B6;
+  /* Tiffany Blue */
+  --accent-color: #E71D36;
+  /* Rose Madder */
+  --background-color: #CBF3F0;
+  /* Light Cyan */
   --card-bg: #FFFFFF;
   --text-color: #011627;
   --success-color: #4CAF50;
@@ -19,45 +23,88 @@
 }
 
 body {
-  font-family: 'Nunito', 'Jua', sans-serif; /* 'Jua' is a friendly Korean font */
+  font-family: 'Nunito', 'Jua', sans-serif;
+  /* 'Jua' is a friendly Korean font */
   background-color: var(--background-color);
   background-image: radial-gradient(#FFBF69 20%, transparent 20%),
-                    radial-gradient(#CBF3F0 20%, transparent 20%);
+    radial-gradient(#CBF3F0 20%, transparent 20%);
   background-position: 0 0, 50px 50px;
   background-size: 100px 100px;
   color: var(--text-color);
   display: flex;
   justify-content: center;
-  align-items: center;
+  /* align-items: center;  <-- REMOVED to prevent clipping on mobile when content is tall */
   min-height: 100vh;
   overflow-x: hidden;
+  padding: 20px 0;
+  /* Add top/bottom padding for breathing room */
 }
 
 .app-container {
   width: 100%;
   max-width: 600px;
   padding: 20px;
+  margin: auto;
+  /* This vertically centers the container if there is space, or allows scroll if not */
 }
 
 /* Animations */
 @keyframes bounceIn {
-  0% { transform: scale(0.3); opacity: 0; }
-  50% { transform: scale(1.05); opacity: 1; }
-  70% { transform: scale(0.9); }
-  100% { transform: scale(1); }
+  0% {
+    transform: scale(0.3);
+    opacity: 0;
+  }
+
+  50% {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+
+  70% {
+    transform: scale(0.9);
+  }
+
+  100% {
+    transform: scale(1);
+  }
 }
 
 @keyframes float {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
-  100% { transform: translateY(0px); }
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
 }
 
 @keyframes shake {
-  10%, 90% { transform: translate3d(-1px, 0, 0); }
-  20%, 80% { transform: translate3d(2px, 0, 0); }
-  30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
-  40%, 60% { transform: translate3d(4px, 0, 0); }
+
+  10%,
+  90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+
+  20%,
+  80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%,
+  50%,
+  70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%,
+  60% {
+    transform: translate3d(4px, 0, 0);
+  }
 }
 
 /* Screens */
@@ -143,7 +190,7 @@ h1 {
   width: 100%;
   padding: 30px;
   border-radius: 30px;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
   text-align: center;
   position: relative;
 }
@@ -216,7 +263,7 @@ h1 {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
   margin-bottom: 30px;
   animation: float 4s ease-in-out infinite;
 }
@@ -248,17 +295,75 @@ h1 {
 }
 
 @keyframes confetti-fall {
-  0% { transform: translateY(-100vh) rotate(0deg); }
-  100% { transform: translateY(100vh) rotate(720deg); }
+  0% {
+    transform: translateY(-100vh) rotate(0deg);
+  }
+
+  100% {
+    transform: translateY(100vh) rotate(720deg);
+  }
 }
 
 @media (max-width: 400px) {
   .options-grid {
     grid-template-columns: 1fr;
   }
-  
+}
+
+/* Mobile Optimizations */
+@media (max-width: 600px) {
+  .app-container {
+    padding: 10px;
+    margin: auto;
+    /* Ensure centering works without clipping */
+  }
+
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+
+  .btn {
+    padding: 15px;
+    font-size: 1.2rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 0 var(--secondary-color);
+  }
+
+  .btn:active {
+    box-shadow: 0 2px 0 var(--secondary-color);
+    transform: translateY(3px);
+  }
+
+  .btn-primary {
+    box-shadow: 0 5px 0 #E0890B;
+  }
+
+  .btn-primary:active {
+    box-shadow: 0 2px 0 #E0890B;
+  }
+
+  .day-selector {
+    gap: 10px;
+  }
+
+  .card {
+    padding: 20px;
+  }
+
   .question-word {
     font-size: 2.2rem;
+    margin-bottom: 20px;
+  }
+
+  .score-display {
+    width: 150px;
+    height: 150px;
+    padding: 20px;
+  }
+
+  .score-number {
+    font-size: 2.5rem;
   }
 }
 
@@ -266,27 +371,29 @@ h1 {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 15px;
-  margin-bottom: 30px;
+  gap: 10px;
+  margin-bottom: 20px;
 }
 
 .question-word {
-  margin-bottom: 0 !important; /* Override previous margin */
+  margin-bottom: 0 !important;
+  /* Override previous margin */
 }
 
 .speaker-btn {
   background: #FFF3E0;
   border: 2px solid var(--primary-color);
   border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  font-size: 1.5rem;
+  width: 40px;
+  height: 40px;
+  font-size: 1.2rem;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: transform 0.1s;
   box-shadow: 0 4px 0 #FFCC80;
+  flex-shrink: 0;
 }
 
 .speaker-btn:active {
