@@ -52,26 +52,27 @@ body {
   /* For absolute positioning of feedback */
 }
 
-/* Feedback Overlay for Massive Emojis */
+/* Feedback Overlay for Fun Emojis */
 .feedback-overlay {
   position: fixed;
-  top: 50%;
+  top: 15%;
+  /* Moved up to avoid covering text */
   left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 15rem;
-  /* HUGE as requested */
+  transform: translateX(-50%);
+  font-size: 8rem;
+  /* Reduced from 15rem */
   pointer-events: none;
   opacity: 0;
   transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   z-index: 9999;
-  text-shadow: 0 0 50px rgba(255, 255, 255, 1);
-  width: 100vw;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+  width: auto;
   text-align: center;
 }
 
 .feedback-overlay.show {
   opacity: 1;
-  transform: translate(-50%, -50%) scale(1.5);
+  transform: translateX(-50%) scale(1.2);
 }
 
 /* Animations */
