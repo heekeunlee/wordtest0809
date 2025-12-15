@@ -29,14 +29,71 @@ class QuizApp {
         const isInApp = ua.includes('kakaotalk') || ua.includes('naver') || ua.includes('line');
 
         if (isInApp) {
-            const warningArea = document.getElementById('browser-warning-area') || document.querySelector('.sound-check-area');
-            if (warningArea) {
-                const msg = document.createElement('p');
-                msg.style.cssText = "font-size: 0.8rem; color: #d32f2f; margin-top: 10px; word-break: keep-all;";
-                msg.innerHTML = "지금 카톡으로 보고계시네요?<br>우측하단 <strong>점 세개</strong>를 눌러 <strong>'다른 브라우저로 열기'</strong>를 클릭하세요.";
-                warningArea.appendChild(msg);
+            // Remove any existing warning in sound area if it exists
+            const oldWarning = document.querySelector('.sound-check-area p');
+            if (oldWarning) oldWarning.remove();
+
+            const container = document.querySelector('.app-container');
+            const warningDiv = document.createElement('div');
+
+            // Styled for top visibility
+            warningDiv.style.cssText = `
+                background-color: rgba(255, 255, 255, 0.95);
+                border: 2px solid #D32F2F;
+                color: #D32F2F;
+                padding: 10px;
+                border-radius: 15px;
+                text-align: center;
+                margin-bottom: 20px;
+                font-family: 'Jua', sans-serif;
+                font-size: 0.9rem;
+                box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+                animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            `;
+
+            warningDiv.innerHTML = `
+                🎄 지금 <strong>카톡</strong>으로 보고 계시네요? 🎄<br>
+                우측 하단 <strong>점 세개(⋯)</strong>를 눌러<br>
+                <strong>'다른 브라우저로 열기'</strong>를 클릭하세요!<br>
+                (그래야 소리가 잘 들려요 🎵)
+            `;
+
+            // Prepend to top of container
+            if (container) {
+                container.insertBefore(warningDiv, container.firstChild);
             }
         }
+    }
+
+    showFeedback(isCorrect) {
+        let feedback = document.querySelector('.feedback-overlay');
+        if (!feedback) {
+            feedback = document.createElement('div');
+            feedback.className = 'feedback-overlay';
+            document.body.appendChild(feedback);
+        }
+
+        // Random fun emojis
+        const correctEmojis = ['😆', '🎉', '👍', '⭐', '🎊'];
+        const wrongEmojis = ['😭', '💦', '💩', '❌', '🥺'];
+
+        const emoji = isCorrect
+            ? correctEmojis[Math.floor(Math.random() * correctEmojis.length)]
+            : wrongEmojis[Math.floor(Math.random() * wrongEmojis.length)];
+
+        feedback.textContent = emoji;
+        feedback.classList.add('show');
+
+        // Play sound effect
+        if (isCorrect) {
+            this.playSound('correct');
+        } else {
+            this.playSound('wrong');
+        }
+
+        setTimeout(() => {
+            feedback.classList.remove('show');
+        }, 1000);
     }
 
     loadVoices() {
@@ -215,11 +272,13 @@ class QuizApp {
 
         if (selected === correct) {
             btn.classList.add('correct');
+            this.showFeedback(true); // Show Correct Emoji
             this.score++;
             // Speak Korean meaning
             this.speak(correct, 'ko-KR');
         } else {
             btn.classList.add('wrong');
+            this.showFeedback(false); // Show Wrong Emoji
             // Highlight the correct one
             buttons.forEach(b => {
                 if (b.innerText === correct) b.classList.add('correct');
