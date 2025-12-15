@@ -19,6 +19,41 @@ class QuizApp {
         if (window.speechSynthesis.onvoiceschanged !== undefined) {
             window.speechSynthesis.onvoiceschanged = () => this.loadVoices();
         }
+
+        this.checkBrowser();
+    }
+
+    checkBrowser() {
+        const ua = navigator.userAgent.toLowerCase();
+        // Detect KakaoTalk, Naver, Line, or generic WebViews
+        const isInApp = ua.includes('kakaotalk') || ua.includes('naver') || ua.includes('line');
+
+        if (isInApp) {
+            const warningId = 'in-app-warning';
+            if (!document.getElementById(warningId)) {
+                const warningDiv = document.createElement('div');
+                warningDiv.id = warningId;
+                warningDiv.style.cssText = `
+                    background-color: #ff9800;
+                    color: white;
+                    padding: 15px;
+                    text-align: center;
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    z-index: 1000;
+                    font-weight: bold;
+                    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+                `;
+                warningDiv.innerHTML = `
+                    ⚠️ 카카오톡/인앱 브라우저에서는 소리가 안 날 수 있습니다.<br>
+                    우측 하단/상단 메뉴를 눌러 <strong>'다른 브라우저로 열기(Chrome/Safari)'</strong>를 선택해주세요!
+                    <button onclick="this.parentElement.remove()" style="margin-left:10px; border:1px solid white; background:transparent; color:white; border-radius:5px;">닫기</button>
+                `;
+                document.body.prepend(warningDiv);
+            }
+        }
     }
 
     loadVoices() {
