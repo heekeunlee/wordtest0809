@@ -47,74 +47,64 @@ class QuizApp {
     testAudio() {
         const btn = document.querySelector('.btn-secondary');
         const originalText = btn.innerText;
-        btn.innerText = "🔊 Testing System...";
+        btn.innerText = "🔊 Playing Both...";
         btn.disabled = true;
 
-        // 1. Try Web Audio API (Beep) with active resume
+        // 1. Web Audio Beep (Immediate)
         try {
             const AudioContext = window.AudioContext || window.webkitAudioContext;
             if (AudioContext) {
                 const ctx = new AudioContext();
-
-                // CRITICAL: Mobile browsers require explicit resume on user gesture
-                if (ctx.state === 'suspended') {
-                    ctx.resume().then(() => {
-                        console.log("AudioContext resumed!");
-                    });
-                }
+                if (ctx.state === 'suspended') ctx.resume();
 
                 const osc = ctx.createOscillator();
                 const gain = ctx.createGain();
 
-                osc.type = 'triangle'; // Louder/sharper than sine
+                osc.type = 'triangle';
                 osc.frequency.setValueAtTime(600, ctx.currentTime);
                 osc.connect(gain);
                 gain.connect(ctx.destination);
 
                 osc.start();
-                // Play for longer (0.5s -> 1.0s) and louder
-                gain.gain.setValueAtTime(1, ctx.currentTime);
-                gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 1.0);
-                osc.stop(ctx.currentTime + 1.0);
+                gain.gain.setValueAtTime(0.5, ctx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.5);
+                osc.stop(ctx.currentTime + 0.5);
             }
-        } catch (e) {
-            console.error("Web Audio API failed", e);
-            alert("Web Audio Error: " + e.message);
-        }
+        } catch (e) { console.error(e); }
 
-        // 2. Try TTS (Voice)
+        // 2. TTS Voice (Immediate - CRITICAL for Mobile)
+        // DO NOT use setTimeout here. It mostly breaks mobile TTS permission.
+        this.synth.cancel();
+
+        const u = new SpeechSynthesisUtterance("System audio check.");
+        u.lang = 'en-US';
+        u.rate = 1.0;
+        u.volume = 1.0;
+
+        u.onstart = () => {
+            btn.innerText = "🗣️ Speaking...";
+        };
+
+        u.onend = () => {
+            btn.innerText = originalText;
+            btn.disabled = false;
+        };
+
+        u.onerror = (e) => {
+            alert("TTS Error: " + e.error);
+            btn.innerText = originalText;
+            btn.disabled = false;
+        };
+
+        this.synth.speak(u);
+
+        // Backup reset
         setTimeout(() => {
-            btn.innerText = "🔊 Speaking...";
-
-            const u = new SpeechSynthesisUtterance("Sound check complete.");
-            u.lang = 'en-US';
-            // Do NOT force a custom voice here to rule out voice corruption
-            // u.voice = ... (removed for test)
-            u.volume = 1.0;
-            u.rate = 1.0;
-
-            u.onend = () => {
+            if (btn.disabled) {
                 btn.innerText = originalText;
                 btn.disabled = false;
-            };
-
-            u.onerror = (e) => {
-                alert("TTS Error: " + e.error);
-                btn.innerText = originalText;
-                btn.disabled = false;
-            };
-
-            this.synth.cancel();
-            this.synth.speak(u);
-
-            // Safety reset
-            setTimeout(() => {
-                if (btn.disabled) {
-                    btn.innerText = originalText;
-                    btn.disabled = false;
-                }
-            }, 4000);
-        }, 600);
+            }
+        }, 4000);
     }
 
     startQuiz(day) {
