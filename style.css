@@ -1,18 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Jua&family=Nunito:wght@400;700;900&display=swap');
 
 :root {
-  --primary-color: #FF9F1C;
-  /* Orange Peel */
-  --secondary-color: #2EC4B6;
-  /* Tiffany Blue */
-  --accent-color: #E71D36;
-  /* Rose Madder */
-  --background-color: #CBF3F0;
-  /* Light Cyan */
+  --primary-color: #D32F2F;
+  /* Christmas Red */
+  --secondary-color: #2E7D32;
+  /* Christmas Green */
+  --accent-color: #FFC107;
+  /* Gold */
+  --background-color: #F8F8FF;
+  /* Snow White */
   --card-bg: #FFFFFF;
-  --text-color: #011627;
-  --success-color: #4CAF50;
-  --error-color: #F44336;
+  --text-color: #333333;
+  --success-color: #388E3C;
+  --error-color: #D32F2F;
 }
 
 * {
@@ -26,10 +26,11 @@ body {
   font-family: 'Nunito', 'Jua', sans-serif;
   /* 'Jua' is a friendly Korean font */
   background-color: var(--background-color);
-  background-image: radial-gradient(#FFBF69 20%, transparent 20%),
-    radial-gradient(#CBF3F0 20%, transparent 20%);
-  background-position: 0 0, 50px 50px;
-  background-size: 100px 100px;
+  /* Festive Background Pattern */
+  background-image: radial-gradient(#D32F2F 15%, transparent 16%),
+    radial-gradient(#2E7D32 15%, transparent 16%);
+  background-position: 0 0, 30px 30px;
+  background-size: 60px 60px;
   color: var(--text-color);
   display: flex;
   justify-content: center;
