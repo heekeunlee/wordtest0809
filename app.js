@@ -25,8 +25,13 @@ class QuizApp {
 
     checkBrowser() {
         const ua = navigator.userAgent.toLowerCase();
-        // Detect KakaoTalk, Naver, Line, or generic WebViews
-        const isInApp = ua.includes('kakaotalk') || ua.includes('naver') || ua.includes('line');
+        // Detect KakaoTalk, Naver, Line, or generic WebViews (wv)
+        // Also 'version/' implies a WebView on Android if not specific browser
+        const isInApp = ua.includes('kakaotalk') ||
+            ua.includes('naver') ||
+            ua.includes('line') ||
+            ua.includes('wv') ||
+            (ua.includes('android') && ua.includes('version/') && !ua.includes('chrome/')); // Broader WebView check
 
         if (isInApp) {
             // Remove any existing warning in sound area if it exists

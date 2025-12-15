@@ -127,11 +127,13 @@ body {
 /* Home Screen */
 h1 {
   font-family: 'Jua', sans-serif;
-  font-size: 3rem;
+  font-size: 4.5rem;
+  /* Massive size as requested */
   color: var(--accent-color);
-  text-shadow: 3px 3px 0px #FF9F1C;
-  margin-bottom: 30px;
+  text-shadow: 4px 4px 0px #FF9F1C;
+  margin-bottom: 20px;
   text-align: center;
+  line-height: 1.2;
   animation: float 3s ease-in-out infinite;
 }
 
@@ -351,7 +353,7 @@ h1 {
   }
 
   h1 {
-    font-size: 2rem;
+    font-size: 3rem;
     margin-bottom: 20px;
   }
 
