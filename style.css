@@ -52,6 +52,28 @@ body {
   /* For absolute positioning of feedback */
 }
 
+/* Feedback Overlay for Massive Emojis */
+.feedback-overlay {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 15rem;
+  /* HUGE as requested */
+  pointer-events: none;
+  opacity: 0;
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  z-index: 9999;
+  text-shadow: 0 0 50px rgba(255, 255, 255, 1);
+  width: 100vw;
+  text-align: center;
+}
+
+.feedback-overlay.show {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1.5);
+}
+
 /* Animations */
 @keyframes bounceIn {
   0% {

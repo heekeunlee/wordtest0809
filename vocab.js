@@ -160,3 +160,95 @@ vocabulary["Day 14"] = [
     { word: "a number of", meaning: "많은" },
     { word: "check out", meaning: "확인하다, 대출하다" }
 ];
+
+vocabulary["Day 15"] = [
+    { word: 'shoot', meaning: '쏘다/촬영하다' },
+    { word: 'organization', meaning: '조직/단체' },
+    { word: 'rush', meaning: '서두르다/돌진' },
+    { word: 'peaceful', meaning: '평화로운' },
+    { word: 'occur', meaning: '일어나다/발생하다' },
+    { word: 'advance', meaning: '나아가다/전진' },
+    { word: 'sensitive', meaning: '민감한/예민한' },
+    { word: 'reply', meaning: '대답하다/답장' },
+    { word: 'attitude', meaning: '태도/자세' },
+    { word: 'illegal', meaning: '불법의' },
+    { word: 'visual', meaning: '시각의/눈에 보이는' },
+    { word: 'mood', meaning: '기분/분위기' },
+    { word: 'firm', meaning: '단단한/확고한/회사' },
+    { word: 'unfortunately', meaning: '불행하게도/유감스럽게도' },
+    { word: 'genius', meaning: '천재' },
+    { word: 'reasonable', meaning: '합리적인/타당한' },
+    { word: 'horror', meaning: '공포' },
+    { word: 'abandon', meaning: '버리다/포기하다' },
+    { word: 'come to an end', meaning: '끝나다' },
+    { word: 'look forward to', meaning: '~을 고대하다(기대하다)' }
+];
+
+vocabulary["Day 16"] = [
+    { word: 'announce', meaning: '발표하다/알리다' },
+    { word: 'saying', meaning: '속담/격언' },
+    { word: 'silence', meaning: '침묵/고요' },
+    { word: 'elect', meaning: '선출하다/뽑다' },
+    { word: 'professor', meaning: '교수' },
+    { word: 'lastly', meaning: '마지막으로' },
+    { word: 'panic', meaning: '공포/당황' },
+    { word: 'guarantee', meaning: '보장하다/보증' },
+    { word: 'calculate', meaning: '계산하다' },
+    { word: 'glow', meaning: '빛나다/타오르다' },
+    { word: 'research', meaning: '연구하다/조사하다' },
+    { word: 'summarize', meaning: '요약하다' },
+    { word: 'detective', meaning: '탐정/형사' },
+    { word: 'charity', meaning: '자선/자선단체' },
+    { word: 'mission', meaning: '임무/사명' },
+    { word: 'former', meaning: '이전의/전임의' },
+    { word: 'scientific', meaning: '과학의/과학적인' },
+    { word: 'instant', meaning: '즉각적인/인스턴트의' },
+    { word: 'B as well as A', meaning: 'A뿐만 아니라 B도' },
+    { word: 'little by little', meaning: '조금씩/점차' }
+];
+
+vocabulary["Day 17"] = [
+    { word: 'educate', meaning: '교육하다' },
+    { word: 'attractive', meaning: '매력적인' },
+    { word: 'sparkle', meaning: '반짝이다' },
+    { word: 'influence', meaning: '영향을 주다/영향' },
+    { word: 'standard', meaning: '기준/표준' },
+    { word: 'myth', meaning: '신화/통념' },
+    { word: 'shave', meaning: '면도하다' },
+    { word: 'survive', meaning: '살아남다/생존하다' },
+    { word: 'lightning', meaning: '번개' },
+    { word: 'threat', meaning: '위협/협박' },
+    { word: 'arrange', meaning: '배열하다/정리하다/마련하다' },
+    { word: 'insist', meaning: '고집하다/주장하다' },
+    { word: 'complaint', meaning: '불평/항의' },
+    { word: 'ancient', meaning: '고대의' },
+    { word: 'moreover', meaning: '게다가/더욱이' },
+    { word: 'quarrel', meaning: '말다툼하다/싸우다' },
+    { word: 'remove', meaning: '제거하다/치우다' },
+    { word: 'thirst', meaning: '갈증/목마름' },
+    { word: 'allow A to V', meaning: 'A가 ~하게 허락하다' },
+    { word: 'break out', meaning: '발생하다/일어나다' }
+];
+
+vocabulary["Day 18"] = [
+    { word: 'attract', meaning: '마음을 끌다/유인하다' },
+    { word: 'disappointed', meaning: '실망한' },
+    { word: 'mess', meaning: '엉망진창/혼란' },
+    { word: 'likely', meaning: '~할 것 같은' },
+    { word: 'postpone', meaning: '연기하다/미루다' },
+    { word: 'innocent', meaning: '무죄의/순수한' },
+    { word: 'apology', meaning: '사과' },
+    { word: 'mostly', meaning: '대개/주로' },
+    { word: 'fortunate', meaning: '운 좋은/다행한' },
+    { word: 'retire', meaning: '은퇴하다/퇴직하다' },
+    { word: 'counselor', meaning: '상담가/카운슬러' },
+    { word: 'generation', meaning: '세대' },
+    { word: 'persuade', meaning: '설득하다' },
+    { word: 'competitive', meaning: '경쟁적인/경쟁력 있는' },
+    { word: 'risk', meaning: '위험/감행하다' },
+    { word: 'pale', meaning: '창백한/옅은' },
+    { word: 'consist', meaning: '구성되다/이루어져 있다' },
+    { word: 'disappear', meaning: '사라지다' },
+    { word: 'from time to time', meaning: '가끔/때때로' },
+    { word: 'keep in mind', meaning: '명심하다' }
+];
