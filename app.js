@@ -72,9 +72,6 @@ class QuizApp {
         document.getElementById('question-counter').innerText = `${this.currentQuestionIndex + 1} / ${this.totalQuestions}`;
         document.getElementById('question-word').innerText = question.word;
 
-        // Auto-play English word
-        this.speakCurrentWord();
-
         // Update Progress Bar
         const progress = ((this.currentQuestionIndex) / this.totalQuestions) * 100;
         document.getElementById('progress-bar').style.width = `${progress}%`;
@@ -89,6 +86,11 @@ class QuizApp {
             btn.onclick = () => this.handleAnswer(btn, option, question.correctMeaning);
             optionsGrid.appendChild(btn);
         });
+
+        // Auto-play English word (Safely moved to end)
+        setTimeout(() => {
+            this.speakCurrentWord();
+        }, 300); // Small delay to ensure UI is ready and feels natural
     }
 
     handleAnswer(btn, selected, correct) {
@@ -117,7 +119,7 @@ class QuizApp {
             } else {
                 this.finishQuiz();
             }
-        }, 1000);
+        }, 1500); // Increased delay slightly to read answer
     }
 
     finishQuiz() {
@@ -171,13 +173,19 @@ class QuizApp {
     }
 
     speak(text, lang) {
-        if (this.synth.speaking) {
-            this.synth.cancel();
+        if (!this.synth) return; // Safety check
+
+        try {
+            if (this.synth.speaking) {
+                this.synth.cancel();
+            }
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = lang;
+            utterance.rate = 0.8; // Slightly slower for kids
+            this.synth.speak(utterance);
+        } catch (e) {
+            console.error("Speech synthesis failed:", e);
         }
-        const utterance = new SpeechSynthesisUtterance(text);
-        utterance.lang = lang;
-        utterance.rate = 0.8; // Slightly slower for kids
-        this.synth.speak(utterance);
     }
 
     speakCurrentWord() {
